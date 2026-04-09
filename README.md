@@ -58,7 +58,22 @@ make -j$(nproc)
 cd digibyte  
 ./autogen.sh  
 ./configure --without-gui  
-make -j$(nproc)
+make -j$(nproc)  
+sudo make install
+
+### DigiByte Core Configuration Note (Important)
+DigiByte rotates algorithms every block.  
+CKPool requires **SHA256d only**.
+
+Edit your DigiByte config:
+
+nano ~/Ckpool-Digibyte/configs/digibyte.conf
+
+Add:
+
+algo=sha256d
+
+This forces DigiByte Core to always return SHA256d block templates for CKPool‑DGB.
 
 ### CKStats Dashboard
 cd ckstats  
@@ -166,6 +181,5 @@ For major changes, open an issue first to discuss what you’d like to modify.
 
 ## ⭐ Acknowledgements
 - Con Kolivas (CKPool)  
-- Z3r0XG (lhr)
 - DigiByte Core developers  
 - Community contributors  
