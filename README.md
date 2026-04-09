@@ -147,14 +147,14 @@ sudo systemctl start digibyted ckpool ckstats
 ## 🧪 Testing the Pool
 
 ### Check CKPool:
-telnet localhost 3333
+telnet localhost 3334
 
 ### Check DigiByte RPC:
 digibyte-cli getblockchaininfo
 
 ### Check CKStats:
 Open browser:  
-http://<your-ip>:3000
+http://<your-ip>:3003
 
 ---
 
