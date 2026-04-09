@@ -181,5 +181,6 @@ For major changes, open an issue first to discuss what you’d like to modify.
 
 ## ⭐ Acknowledgements
 - Con Kolivas (CKPool)  
+- Z3r0XG (lhr)
 - DigiByte Core developers  
 - Community contributors  
