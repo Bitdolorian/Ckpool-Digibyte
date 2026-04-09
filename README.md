@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="assets/ckpool-dgb-ckstats.jpg" width="700" alt="CKPool-DigiByte-CKstats">
-</p>
+![CKPool-DigiByte Stack](assets/ckpool-dgb-ckstats.jpg)
 
 # CKPool‑DigiByte: Solo Mining Stack  
 A fully integrated, deterministic solo‑mining stack for DigiByte (DGB), combining:
