@@ -184,7 +184,9 @@ For major changes, open an issue first to discuss what you’d like to modify.
 ---
 
 ## ⭐ Acknowledgements
+- Co-Pilot
 - Con Kolivas (CKPool)  
 - Z3r0XG (lhr)
+- MRV777
 - DigiByte Core developers  
 - Community contributors  
