@@ -84,7 +84,7 @@ pnpm start
 
 ---
 
-## ⚙️ Systemd Setup (Manual Creation)
+## ⚙️ Systemd Setup (Manual Creation) for auto seed, update user and cleanup
 
 ### Create DigiByte Core service
 sudo nano /etc/systemd/system/digibyted.service
