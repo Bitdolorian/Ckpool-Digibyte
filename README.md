@@ -53,12 +53,6 @@ This repository provides everything required to run a self‑hosted, autonomous 
 
 ## 🔧 Build Instructions
 
-### CKPool‑DGB
-cd ckpool-source  
-./autogen.sh  
-./configure  
-make -j$(nproc)
-
 ### DigiByte Core
 cd digibyte  
 ./autogen.sh  
@@ -80,8 +74,16 @@ algo=sha256d
 
 This forces DigiByte Core to always return SHA256d block templates for CKPool‑DGB.
 
+### CKPool‑DGB
+sudo apt-get install build-essential yasm libzmq3-dev
+./configure
+make
+---------------------
 ### CKStats Dashboard
-cd ckstats  
+Install Dependencies:
+---------------------
+Install pnpm if not already available:
+curl -fsSL https://get.pnpm.io/install.sh | bash
 cp .env.example .env  
 pnpm install  
 pnpm build  
