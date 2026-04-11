@@ -1,0 +1,11 @@
+rpcurl=http://127.0.0.1:14022
+rpcuser=digibyted
+rpcpass=changeme
+stratumport=3333
+stratumbind=0.0.0.0
+pooladdress=YOUR_DGB_ADDRESS_HERE
+logdir=logs
+loglevel=3
+defaultdiff=256
+mindiff=64
+maxdiff=4096

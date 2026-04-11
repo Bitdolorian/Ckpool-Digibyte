@@ -1,0 +1,8 @@
+server=1
+daemon=1
+txindex=1
+rpcuser=digibyted
+rpcpassword=changeme
+rpcallowip=127.0.0.1
+rpcport=14022
+port=12024

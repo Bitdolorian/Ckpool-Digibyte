@@ -1,38 +1,21 @@
-###############################################
-# GLOBAL IGNORE — REPO ROOT
-###############################################
-
-# Logs
+# GLOBAL
 *.log
 *.pid
 *.sock
 *.tmp
 logs/
 tmp/
-
-# OS junk
 .DS_Store
 Thumbs.db
 
-###############################################
 # CKPOOL SOURCE
-###############################################
-
-# Autotools build artifacts
 ckpool-source/Makefile
 ckpool-source/Makefile.in
 ckpool-source/Makefile.am
 ckpool-source/aclocal.m4
 ckpool-source/autom4te.cache/
 ckpool-source/compile
-ckpool-source/config.guess
-ckpool-source/config.h
-ckpool-source/config.h.in
-ckpool-source/config.log
-ckpool-source/config.status
-ckpool-source/config.sub
-ckpool-source/configure
-ckpool-source/configure.ac
+ckpool-source/config.*
 ckpool-source/depcomp
 ckpool-source/install-sh
 ckpool-source/libtool
@@ -41,73 +24,36 @@ ckpool-source/missing
 ckpool-source/stamp-h1
 ckpool-source/test-driver
 ckpool-source/tests/
-
-# CKPool runtime logs
 ckpool-source/logs/
-ckpool-source/*.log
-
-# Sensitive configs (you commit sanitized versions manually)
-ckpool-source/ckpool-dgb.conf.backup
 ckpool-source/*.bak
+ckpool-source/*.backup
 
-###############################################
-# CKSTATS (Next.js + TypeORM)
-###############################################
-
-# Environment files (never commit secrets)
+# CKSTATS
 ckstats/.env
-ckstats/.env.local
-ckstats/.env.production
-ckstats/.env.development
-
-# Build artifacts
 ckstats/.next/
 ckstats/dist/
-
-# Dependencies
 ckstats/node_modules/
-
-# Lockfiles (you use pnpm)
 ckstats/package-lock.json
 
-# Tests (you removed them)
-ckstats/__tests__/
-ckstats/jest.config.js
-ckstats/jest.setup.js
+# DIGIBYTE CORE
+digibyte-core/src/*.o
+digibyte-core/src/*.a
+digibyte-core/src/*.so
+digibyte-core/src/.deps/
+digibyte-core/src/.objs/
+digibyte-core/Makefile
+digibyte-core/Makefile.*
+digibyte-core/config.*
+digibyte-core/autom4te.cache/
+digibyte-core/build-aux/
+digibyte-core/wallet.dat
+digibyte-core/peers.dat
+digibyte-core/mempool.dat
+digibyte-core/banlist.dat
+digibyte-core/blocks/
+digibyte-core/chainstate/
 
-###############################################
-# DIGIBYTE CORE SOURCE (UNBUILT)
-###############################################
-
-# Build outputs (if someone builds locally)
-digibyte/src/*.o
-digibyte/src/*.a
-digibyte/src/*.so
-digibyte/src/.deps/
-digibyte/src/.objs/
-
-# Autotools outputs
-digibyte/Makefile
-digibyte/Makefile.in
-digibyte/Makefile.am
-digibyte/config.log
-digibyte/config.status
-digibyte/config.cache
-digibyte/autom4te.cache/
-digibyte/build-aux/
-
-# Runtime blockchain data (never commit)
-digibyte/wallet.dat
-digibyte/peers.dat
-digibyte/mempool.dat
-digibyte/banlist.dat
-digibyte/blocks/
-digibyte/chainstate/
-
-###############################################
-# BINARIES
-###############################################
-
+# BIN
 bin/*.pid
 bin/*.tmp
 bin/*.log
