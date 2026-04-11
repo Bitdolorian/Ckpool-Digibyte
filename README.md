@@ -147,17 +147,6 @@ sudo systemctl daemon-reload
 sudo systemctl enable digibyted ckpool ckstats  
 sudo systemctl start digibyted ckpool ckstats
 
-## ⚙️ Install (Automatic install)
-
-Build everything
-
-./scripts/build-all.sh
-Start everything
-
-./scripts/start-all.sh
-Stop everything
-
-./scripts/stop-all.sh
 ---
 
 ## 🧪 Testing the Pool
