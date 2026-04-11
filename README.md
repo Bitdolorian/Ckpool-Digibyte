@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="assets/ckpool_dgb_ckstats.jpg" width="700" alt="CKPool-DigiByte Stack">
+</p>
+
+
 # CKPool‑DigiByte: Solo Mining Stack  
 A fully integrated, deterministic solo‑mining stack for DigiByte (DGB), combining:
 
@@ -181,5 +186,6 @@ For major changes, open an issue first to discuss what you’d like to modify.
 
 ## ⭐ Acknowledgements
 - Con Kolivas (CKPool)  
+- Z3r0XG (lhr)
 - DigiByte Core developers  
 - Community contributors  
