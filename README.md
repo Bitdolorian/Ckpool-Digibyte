@@ -54,11 +54,13 @@ This repository provides everything required to run a self‑hosted, autonomous 
 ## 🔧 Build Instructions
 
 ### DigiByte Core
+```
 cd digibyte  
 ./autogen.sh  
 ./configure --without-gui  
 make -j$(nproc)  
 sudo make install
+```
 
 ### DigiByte Core Configuration Note (Important)
 DigiByte rotates algorithms every block.  
@@ -66,36 +68,56 @@ CKPool requires **SHA256d only**.
 
 Edit your DigiByte config:
 
+```
 nano ~/Ckpool-Digibyte/configs/digibyte.conf
+```
 
 Add:
 
+```
 algo=sha256d
+```
 
 This forces DigiByte Core to always return SHA256d block templates for CKPool‑DGB.
 
+---
+
 ### CKPool‑DGB
+```
 sudo apt-get install build-essential yasm libzmq3-dev
 ./configure
 make
----------------------
+```
+
+---
+
 ### CKStats Dashboard
+
 Install Dependencies:
----------------------
+
 Install pnpm if not already available:
+
+```
 curl -fsSL https://get.pnpm.io/install.sh | bash
+```
+
+```
 cp .env.example .env  
 pnpm install  
 pnpm build  
 pnpm start
+```
 
 ---
 
 ## ⚙️ Systemd Setup (Manual Creation)
 
 ### Create DigiByte Core service
+```
 sudo nano /etc/systemd/system/digibyted.service
+```
 
+```
 [Unit]  
 Description=DigiByte Daemon  
 After=network.target
@@ -108,11 +130,14 @@ TimeoutStopSec=90
 
 [Install]  
 WantedBy=multi-user.target
-
+```
 
 ### Create CKPool‑DGB service
+```
 sudo nano /etc/systemd/system/ckpool.service
+```
 
+```
 [Unit]  
 Description=CKPool-DGB Solo Pool  
 After=network.target digibyted.service
@@ -124,11 +149,14 @@ Restart=always
 
 [Install]  
 WantedBy=multi-user.target
-
+```
 
 ### Create CKStats Dashboard service
+```
 sudo nano /etc/systemd/system/ckstats.service
+```
 
+```
 [Unit]  
 Description=CKStats Dashboard  
 After=network.target postgresql.service
@@ -142,26 +170,147 @@ Environment=NODE_ENV=production
 
 [Install]  
 WantedBy=multi-user.target
-
+```
 
 ### Enable and start all services
+```
 sudo systemctl daemon-reload  
 sudo systemctl enable digibyted ckpool ckstats  
 sudo systemctl start digibyted ckpool ckstats
+```
+
+---
+
+# 🔥 PM2 Setup (Alternative to Systemd)
+
+PM2 is a lightweight process manager that can supervise DigiByte Core, CKPool‑DGB, and CKStats.
+
+---
+
+## 1. Install PM2
+
+```
+sudo npm install -g pm2
+pm2 -v
+```
+
+---
+
+## 2. Start DigiByte Core under PM2
+
+```
+pm2 start /usr/local/bin/digibyted --name digibyted -- \
+  -conf=/home/umbrel/Ckpool-Digibyte/configs/digibyte.conf
+```
+
+Logs:
+
+```
+pm2 logs digibyted
+```
+
+---
+
+## 3. Start CKPool‑DGB under PM2
+
+```
+pm2 start /home/umbrel/Ckpool-Digibyte/ckpool-source/ckpool-dgb --name ckpool-dgb -- \
+  -c /home/umbrel/Ckpool-Digibyte/configs/ckpool-dgb.conf
+```
+
+Logs:
+
+```
+pm2 logs ckpool-dgb
+```
+
+---
+
+## 4. Start CKStats under PM2
+
+```
+cd /home/umbrel/Ckpool-Digibyte/ckstats
+pm2 start pnpm --name ckstats -- start
+```
+
+Logs:
+
+```
+pm2 logs ckstats
+```
+
+---
+
+## 5. Save PM2 Process List
+
+```
+pm2 save
+```
+
+---
+
+## 6. Enable PM2 Startup on Boot
+
+```
+pm2 startup
+```
+
+Follow the printed command.
+
+---
+
+## 7. PM2 Management Commands
+
+Status:
+
+```
+pm2 status
+```
+
+Restart:
+
+```
+pm2 restart digibyted
+pm2 restart ckpool-dgb
+pm2 restart ckstats
+```
+
+Stop:
+
+```
+pm2 stop digibyted
+pm2 stop ckpool-dgb
+pm2 stop ckstats
+```
+
+Delete:
+
+```
+pm2 delete digibyted
+pm2 delete ckpool-dgb
+pm2 delete ckstats
+```
 
 ---
 
 ## 🧪 Testing the Pool
 
 ### Check CKPool:
+```
 telnet localhost 3333
+```
 
 ### Check DigiByte RPC:
+```
 digibyte-cli getblockchaininfo
+```
 
 ### Check CKStats:
-Open browser:  
+Open browser:
+
+```
 http://<your-ip>:3000
+```
 
 ---
 
